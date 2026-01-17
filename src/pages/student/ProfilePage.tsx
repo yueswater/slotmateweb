@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { User, Hash, ShieldCheck, ArrowLeft, Loader2, Globe, GraduationCap, Award, LockKeyhole, KeyRound } from 'lucide-react';
-import { useNavigate, Link } from 'react-router-dom';
+import { User, Hash, ShieldCheck, ArrowLeft, Loader2, GraduationCap, Award, LockKeyhole, KeyRound } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/layout/Navbar';
 import { authService } from '../../services/authService';
 
