@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { LockKeyhole, ShieldAlert, ArrowLeft, Loader2, CheckCircle2, Eye, EyeOff, Info } from 'lucide-react';
-import Navbar from '../../components/layout/Navbar';
 import { authService } from '../../services/authService';
+import Navbar from '../../components/layout/navbar/Navbar';
 
 export default function ChangePasswordPage() {
     const navigate = useNavigate();

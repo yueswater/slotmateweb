@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, CheckCircle2, AlertCircle, Clock, MousePointerClick, Loader2 } from 'lucide-react';
-import Navbar from '../../components/layout/Navbar';
 import { appointmentService } from '../../services/appointService';
+import Navbar from '../../components/layout/navbar/Navbar';
 
 const START_HOUR = 9;
 const END_HOUR = 18;

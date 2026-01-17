@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { LogIn, AlertCircle } from 'lucide-react';
-import Navbar from '../../components/layout/Navbar';
 import { authService, type LoginCredentials } from '../../services/authService';
+import Navbar from '../../components/layout/navbar/Navbar';
 
 export default function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm<LoginCredentials>();
@@ -38,7 +38,7 @@ export default function LoginPage() {
                 <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
                     <div className="flex justify-center">
                         <div className="btn btn-circle btn-neutral no-animation cursor-default">
-                            <LogIn className="h-6 w-6" />
+                            <LogIn className="h-6 w-6 text-base-100" />
                         </div>
                     </div>
                     <h2 className="mt-6 text-4xl font-black italic uppercase tracking-tighter text-base-content">
@@ -101,7 +101,7 @@ export default function LoginPage() {
                                     <button
                                         type="submit"
                                         disabled={loading}
-                                        className="btn btn-neutral w-full rounded-none font-black italic uppercase tracking-[0.2em]"
+                                        className="btn btn-neutral text-base-100 w-full rounded-none font-black italic uppercase tracking-[0.2em]"
                                     >
                                         {loading ? (
                                             <span className="loading loading-spinner"></span>

@@ -7,3 +7,9 @@
         @apply rounded-full text-[#f2f2f2];
     }
 }
+
+@layer components {
+    .mobile-nav-link {
+        @apply flex items-center gap-4 p-4 text-xl font-bold text-base-content hover:bg-base-200/50 rounded-xl transition-all;
+    }
+}

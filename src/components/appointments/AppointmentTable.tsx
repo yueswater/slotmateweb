@@ -12,7 +12,7 @@ interface AppointmentTableProps {
 
 export default function AppointmentTable({ appointments, onCancel, onConfirm, onReject, isAdmin = false }: AppointmentTableProps) {
     return (
-        <div className="w-full bg-white">
+        <div className="w-full bg-base-100">
             <table className="table w-full border-collapse">
                 <thead>
                     <tr className="border-b-4 border-neutral bg-neutral/5 text-neutral">
@@ -102,7 +102,7 @@ export default function AppointmentTable({ appointments, onCancel, onConfirm, on
                                             {appt.status === 'scheduled' && onConfirm && (
                                                 <button
                                                     onClick={() => onConfirm(appt.id)}
-                                                    className="btn btn-xs btn-success rounded-none font-black uppercase tracking-wider text-white"
+                                                    className="btn btn-xs btn-success rounded-none font-black uppercase tracking-wider text-base-100"
                                                     title="Confirm Appointment"
                                                 >
                                                     <CheckCircle size={14} />
@@ -111,7 +111,7 @@ export default function AppointmentTable({ appointments, onCancel, onConfirm, on
                                             {(appt.status === 'scheduled' || appt.status === 'confirmed') && onReject && (
                                                 <button
                                                     onClick={() => onReject(appt.id)}
-                                                    className="btn btn-xs btn-error rounded-none font-black uppercase tracking-wider text-white"
+                                                    className="btn btn-xs btn-error rounded-none font-black uppercase tracking-wider text-base-100"
                                                     title="Reject Appointment"
                                                 >
                                                     <Ban size={14} />
@@ -123,7 +123,7 @@ export default function AppointmentTable({ appointments, onCancel, onConfirm, on
                                             {onCancel && (appt.status === 'scheduled' || appt.status === 'confirmed') && (
                                                 <button
                                                     onClick={() => onCancel(appt.id)}
-                                                    className="btn btn-xs btn-error rounded-none font-black uppercase tracking-wider text-white"
+                                                    className="btn btn-xs btn-error rounded-none font-black uppercase tracking-wider text-base-100"
                                                 >
                                                     <XCircle size={14} /> Revoke
                                                 </button>

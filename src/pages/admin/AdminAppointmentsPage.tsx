@@ -1,12 +1,12 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Briefcase, Loader2, Filter, X } from 'lucide-react';
-import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 import AppointmentTable from '../../components/appointments/AppointmentTable';
 import ActionModal from '../../components/appointments/ActionModal';
 import NotificationModal, { type ModalVariant } from '../../components/common/NotificationModal';
 import { appointmentService } from '../../services/appointService';
 import type { Appointment } from '../../types/appointment';
+import Navbar from '../../components/layout/navbar/Navbar';
 
 export default function AdminAppointmentsPage() {
     const [appointments, setAppointments] = useState<Appointment[]>([]);

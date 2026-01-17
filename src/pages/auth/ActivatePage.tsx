@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, Key, ArrowRight, Loader2, UserCheck, Eye, EyeOff, Mail } from 'lucide-react';
 import { authService } from '../../services/authService';
-import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
 import NotificationModal, { type ModalVariant } from '../../components/common/NotificationModal';
+import Navbar from '../../components/layout/navbar/Navbar';
 
 export default function ActivatePage() {
     const navigate = useNavigate();

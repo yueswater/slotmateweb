@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import Hero from '../components/home/Hero';
 import SlotList from '../components/home/SlotList';
 import NotificationModal, { type ModalVariant } from '../components/common/NotificationModal';
+import Navbar from '../components/layout/navbar/Navbar';
 
 export default function HomePage() {
     const [modalConfig, setModalConfig] = useState({
