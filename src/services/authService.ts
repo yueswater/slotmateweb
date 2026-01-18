@@ -11,6 +11,17 @@ interface AuthResponse {
     user: any;
 }
 
+interface ForgotPasswordResponse {
+    message: string;
+    email: string;
+}
+
+interface ResetPasswordData {
+    uidb64: string;
+    token: string;
+    new_password: string;
+}
+
 export const authService = {
     login: async (credentials: LoginCredentials) => {
         const response = await api.post<AuthResponse>('/auth/login/', credentials);
@@ -61,4 +72,14 @@ export const authService = {
         const response = await api.post('/auth/activate/', { student_id, password, email });
         return response.data;
     },
+
+    forgotPassword: async (student_id: string) => {
+        const response = await api.post<ForgotPasswordResponse>('/auth/forgot-password/', { student_id });
+        return response.data;
+    },
+
+    resetPasswordConfirm: async (data: ResetPasswordData) => {
+        const response = await api.post('/auth/reset-password/', data);
+        return response.data;
+    }
 };

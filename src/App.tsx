@@ -9,6 +9,8 @@ import MyAppointmentsPage from './pages/student/AppointmentsPage';
 import ProfilePage from './pages/student/ProfilePage';
 import ChangePasswordPage from './pages/auth/ChangePasswordPage';
 import ActivatePage from './pages/auth/ActivatePage';
+import ResetPasswordPage from './pages/auth/ResetPasswordPage';
+import ForgotPasswordPage from './pages/auth/ForgotPasswordPage';
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/activate" element={<ActivatePage />} />
+
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password/:uid/:token" element={<ResetPasswordPage />} />
 
         <Route
           path="/my-appointments"

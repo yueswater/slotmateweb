@@ -83,6 +83,12 @@ export default function LoginPage() {
                                 <div className="form-control">
                                     <label className="label py-1">
                                         <span className="label-text font-black uppercase italic text-xs tracking-widest opacity-60">Password</span>
+                                        <Link
+                                            to="/forgot-password"
+                                            className="label-text-alt link link-hover font-bold uppercase italic text-[10px] tracking-widest opacity-60 hover:opacity-100 hover:text-neutral"
+                                        >
+                                            Forgot Password?
+                                        </Link>
                                     </label>
                                     <input
                                         type="password"
