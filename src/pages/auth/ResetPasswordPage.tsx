@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { KeyRound, Check, Loader2, AlertTriangle, Eye, EyeOff } from 'lucide-react';
+import { KeyRound, Check, Loader2, AlertTriangle, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 import { authService } from '../../services/authService';
 import Navbar from '../../components/layout/navbar/Navbar';
 
 export default function ResetPasswordPage() {
-
     const { uid, token } = useParams();
     const navigate = useNavigate();
 
+
+    const [otp, setOtp] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +22,6 @@ export default function ResetPasswordPage() {
         e.preventDefault();
         setError('');
 
-
         if (password !== confirmPassword) {
             setError("Passwords do not match.");
             return;
@@ -32,32 +32,34 @@ export default function ResetPasswordPage() {
             return;
         }
 
-        if (!uid || !token) {
-            setError("Invalid reset link. Please request a new one.");
+        if (!uid) {
+            setError("Invalid link (User ID missing).");
             return;
         }
 
         setIsLoading(true);
 
         try {
+            const payloadToken = otp ? "" : (token || "");
+
             await authService.resetPasswordConfirm({
                 uidb64: uid,
-                token: token,
+                token: payloadToken,
+                otp: otp,
                 new_password: password
             });
 
             setIsSuccess(true);
-
 
             setTimeout(() => {
                 navigate('/login');
             }, 3000);
 
         } catch (err: any) {
-
             const errorMsg = err.response?.data?.error ||
+                err.response?.data?.otp?.[0] ||
                 err.response?.data?.token?.[0] ||
-                "Reset failed. The link may have expired.";
+                "Reset failed. Please check your code or try again.";
             setError(errorMsg);
         } finally {
             setIsLoading(false);
@@ -82,11 +84,30 @@ export default function ResetPasswordPage() {
                                     Set New Password
                                 </h1>
                                 <p className="text-sm font-bold text-neutral/60 uppercase tracking-widest">
-                                    Create a strong password for your account
+                                    Enter the code from your email
                                 </p>
                             </div>
 
                             <form onSubmit={handleSubmit} className="space-y-6">
+                                {/* 新增：OTP 輸入框 */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text font-black uppercase italic tracking-widest text-xs">Verification Code</span>
+                                    </label>
+                                    <div className="relative">
+                                        <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral/30" size={20} />
+                                        <input
+                                            type="text"
+                                            className="input input-bordered w-full pl-12 rounded-none border-2 border-neutral/20 focus:border-neutral focus:outline-none font-mono font-bold text-xl tracking-[0.2em]"
+                                            value={otp}
+                                            onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                                            placeholder="000000"
+                                            maxLength={6}
+                                            disabled={isLoading}
+                                        />
+                                    </div>
+                                </div>
+
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text font-black uppercase italic tracking-widest text-xs">New Password</span>
@@ -135,15 +156,14 @@ export default function ResetPasswordPage() {
 
                                 <button
                                     type="submit"
-                                    disabled={isLoading || !password || !confirmPassword}
-                                    className="btn btn-base-100 text-neutral w-full rounded-none font-black italic uppercase tracking-[0.2em] h-12 text-lg hover:bg-neutral/90 shadow-lg transition-all"
+                                    disabled={isLoading || !password || !confirmPassword || otp.length < 6}
+                                    className="btn btn-neutral w-full rounded-none font-black italic uppercase tracking-[0.2em] h-12 text-lg hover:scale-[1.02] active:scale-[0.98] shadow-lg transition-all"
                                 >
                                     {isLoading ? <Loader2 className="animate-spin" /> : "Reset Password"}
                                 </button>
                             </form>
                         </>
                     ) : (
-
                         <div className="text-center py-10 animate-in zoom-in duration-300">
                             <div className="inline-flex items-center justify-center w-20 h-20 bg-success/10 rounded-full mb-6">
                                 <Check className="w-10 h-10 text-success" strokeWidth={4} />

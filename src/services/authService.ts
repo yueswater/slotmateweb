@@ -19,6 +19,7 @@ interface ForgotPasswordResponse {
 interface ResetPasswordData {
     uidb64: string;
     token: string;
+    otp?: string;
     new_password: string;
 }
 

@@ -4,7 +4,7 @@ import calendarImg from '../../assets/images/calendar.png';
 export default function Hero() {
     return (
         <div className="min-h-screen bg-base-200 relative flex items-center justify-center overflow-hidden">
-            <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 py-20 flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 pt-32 pb-12 md:pt-40 md:pb-20 flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
 
                 <div className="flex-1 w-full flex justify-center lg:justify-end">
                     <div className="relative w-64 sm:w-80 md:w-96 lg:w-[32rem]">
@@ -28,10 +28,10 @@ export default function Hero() {
                         Available every Monday and Friday afternoon.
                     </p>
 
-                    <div className="pt-2">
+                    <div className="pt-4 w-full sm:w-auto">
                         <a
                             href="#slot-list"
-                            className="btn btn-neutral btn-lg px-12 text-base-100 shadow-xl rounded-none font-black italic uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all"
+                            className="btn btn-neutral btn-lg w-full sm:w-auto px-12 text-base-100 shadow-xl rounded-none font-black italic uppercase tracking-[0.2em] hover:scale-105 active:scale-95 transition-all"
                         >
                             Book Now
                         </a>
